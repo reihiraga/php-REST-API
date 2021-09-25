@@ -25,10 +25,9 @@ int getSensor(){
 void sendToServer(int mytemp){  
   if((WiFiMulti.run() == WL_CONNECTED)) {    
     String temper=(String)mytemp;
-    String apiGetData = "http://192.168.1.6/IO/input.php?temp="+temper;
+    String apiGetData = "http://192.168.1.6/IO/input.php?temp="+temper; //change 192.168.1.6 with your IP 
     HTTPClient http;
-    http.begin(wifiClient, apiGetData);
-    //change 192.168.1.6 with your IP    
+    http.begin(wifiClient, apiGetData);   
     USE_SERIAL.print("[HTTP] GET...\n");    
     //start connection and send HTTP header   
     int httpCode = http.GET();    
@@ -56,7 +55,7 @@ void setup() {
     USE_SERIAL.flush();    
     delay(1000);  
   }  
-  WiFiMulti.addAP("rahayu_plus", "Desember1ok");// Set Your (ID, Password) WiFi here
+  WiFiMulti.addAP("admin", "admin123");// Set Your (ID, Password) WiFi here
 }
 
 void loop() {
